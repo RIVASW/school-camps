@@ -2,9 +2,9 @@
 
 class V1::CampsController < ApplicationController
   def index
-    render(json: {
+    render(json: [{
       name: 'summer camp',
       time: 'whole summer from 8am to 7pm'
-    }.to_json)
+    }].to_json)
   end
 end
