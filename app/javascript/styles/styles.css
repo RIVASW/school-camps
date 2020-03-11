@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+body {
+    background: whitesmoke;
+}
+
+.container {
+    position: relative;
+}
+
+.mainText {
+    font-family: 'Luckiest Guy', cursive;
+    color: white;
+    font-size: 40px;
+    margin-top: 20px;
+    position: absolute;
+    top: 170px;
+    right: 50px;
+}
+
+.mainPhoto {
+    width: 100%;
+    height: 400px;
+}
+
+.mainItems {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 25px;
+    color: black;
+}
+
+.main-nav {
+    text-align: center;
+    padding-top: 30px;
+    font-size: 25px;
+    color: black;
+}
+
+.camps-header {
+    text-align: center;
+    padding-top: 30px;
+    font-size: 30px;
+}
+
+.camp-list {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 20px;
+    color: black;
+}
+
+.activities-list {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 20px;
+    color: black;
+}
+
