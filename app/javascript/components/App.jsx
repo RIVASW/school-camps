@@ -7,8 +7,12 @@ import configreStore from "../configureStore"
 import CampListItemPage from "./CampListItemPage"
 import MainPage from "./MainPage"
 import ActivitiesPage from "./ActivitiesPage"
-import styles from "../styles/styles"
 import AddCampPage from "./AddCampPage"
+import EditCampPage from "./EditCampPage"
+import { NavigationBar } from "./NavigationBar"
+import { Layuot } from "./Layout"
+import { Jumbotron } from "./Jumbotron"
+import { Nav, Navbar } from 'react-bootstrap'
 
 const store = configreStore();
 
@@ -16,15 +20,22 @@ class App extends React.Component {
   render () {
     return (
       <Provider store={store}>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={MainPage} />
-            <Route path="/camps" component={CampsPage} exact={true} />
-            <Route path="/camps/:id" component={CampListItemPage} />
-            <Route exact path="/activities" component={ActivitiesPage} />
-            <Route exact path="/add" component={AddCampPage} />
-          </Switch>
-        </BrowserRouter>
+        <React.Fragment>
+        <NavigationBar/>
+        <Jumbotron/>
+        <Layuot>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/" component={MainPage} />
+              <Route path="/camps" component={CampsPage} exact={true} />
+              <Route path="/camps/:id" component={CampListItemPage} />
+              <Route exact path="/activities" component={ActivitiesPage} />
+              <Route exact path="/add" component={AddCampPage} />
+              <Route exact path="/edit/:id" component={EditCampPage} />
+            </Switch>    
+          </BrowserRouter>
+        </Layuot>
+        </React.Fragment>
       </Provider>
     );
   }
