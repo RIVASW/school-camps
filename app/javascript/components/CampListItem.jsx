@@ -7,17 +7,21 @@ const CampListItem = (props) => {
     const {id, location, name, isAdmin} = props;
 
     return (
-        <div className="camp-list">
-            <Link to={`/camps/${id}`}>
-                <p>{name}</p>
-            </Link>
-            <p>{location}</p>
+        <div className="col-md-4">
+            <div className="card mb-4 box-shadow">
+                <div className="card-body">
+                    <Link to={`/camps/${id}`}>
+                        <p className="card-text">{name}</p>
+                    </Link>
+                        <p className="card-text">{location}</p>
+                </div>
 
-            {isAdmin && 
-                <Link to={`/edit/${id}`}>
-                    <p>EDIT</p>
-                </Link>
-            } 
+                {isAdmin && 
+                    <Link to={`/edit/${id}`}>
+                        <p>EDIT</p>
+                    </Link>
+                }
+            </div> 
         </div>
     )
 };

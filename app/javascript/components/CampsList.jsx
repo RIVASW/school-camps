@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import CampListItem from './CampListItem';
 
 const CampsList = ({camps}) => (
-    <div>
+    <div className="row">
         {camps.map((camp) => { 
             return <CampListItem key={camp.id} {...camp} />
         })}

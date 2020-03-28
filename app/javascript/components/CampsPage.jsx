@@ -15,10 +15,12 @@ class CampsPage extends React.Component {
       return (<div>loading...</div>)
     } else {
       return (
+          
           <div>
-            <h3 className="camps-header">Camps for kids</h3>
+            <h3 className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">Camps for kids</h3>
             <CampsList camps={ this.props.camps } />
           </div>
+          
       );
     } 
   }
