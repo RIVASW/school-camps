@@ -5,12 +5,14 @@ const initialState = {
   camps: [],
   currentCamp: null,
   isFetching: false,
-  forReview: undefined
+  forReview: undefined,
+  isSuccess: false,
+  isDeleted: false,
+  isEdited: false,
+  isAdmin: false
 };
 
 function rootReducer(state, action) {
-  console.log(action.type);
-  console.log(state);
 
   switch (action.type) {
     case "REQUEST_CAMPS":
@@ -24,9 +26,19 @@ function rootReducer(state, action) {
       console.log(currentCamp);
       return { ...state, currentCamp, isFetching: false };
     case "ADD_FOR_REVIEW":
-      const item = action.newItem;
-      console.log(item);
-      return { ...state, forReview: item };
+      return { ...state, isSuccess: false };
+    case "SEND_SUCCESS":
+      return { ...state, isSuccess: true };
+    case "DELETE_REQUEST":
+      return { ...state, isDeleted: false };
+    case "DELETED_SUCCES":
+      return { ...state, isDeleted: true };
+    case "EDIT_CAMP_REQUEST":
+      return { ...state, isEdited: false };
+    case "EDIT_SUCCESS":
+      return { ...state, isEdited: true };
+    case "IS_ADMIN":
+      return { ...state, isAdmin: action.isAdmin };
   default: return state;
   }
 };
