@@ -5,7 +5,7 @@ import { fetchCamp } from '../actions/camp';
 
 class CampListItemPage extends React.Component {
 
-    componentDidMount() {
+    componentWillMount() {
         const { dispatch } = this.props
         const campId = this.props.match.params.id;
         dispatch(fetchCamp(campId))
@@ -18,9 +18,9 @@ class CampListItemPage extends React.Component {
         } else {
             return (
                 <div>
-                    <CampListItemInfo
+                   <CampListItemInfo
                         camp={this.props.camp}
-                    />
+                        />
                 </div>
             );
         }

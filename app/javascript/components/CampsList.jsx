@@ -5,7 +5,7 @@ import CampListItem from './CampListItem';
 const CampsList = ({camps}) => (
     <div>
         {camps.map((camp) => { 
-            return <CampListItem key={camp.id} {...camp}/>
+            return <CampListItem key={camp.id} {...camp} />
         })}
     </div>
 );
