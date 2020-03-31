@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class V1::CampsController < V1::ApiBase
-  before_action :set_camp, only: %i[show update destroy]
+  before_action :set_camp, only: %i[show update destroy avatar]
 
   attr_reader :camp
 
@@ -29,6 +29,14 @@ class V1::CampsController < V1::ApiBase
     head(:no_content)
   end
 
+  def avatar
+    if camp&.avatar&.attached?
+      redirect_to rails_blob_url(camp.avatar)
+    else
+      head :not_found
+    end
+  end
+
   private
 
   def set_camp
@@ -41,7 +49,8 @@ class V1::CampsController < V1::ApiBase
       :location,
       :price,
       :contacts,
-      :description
+      :description,
+      :avatar
     )
   end
 end
