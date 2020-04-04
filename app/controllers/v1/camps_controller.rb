@@ -2,7 +2,7 @@
 
 class V1::CampsController < V1::ApiBase
   before_action :set_camp, only: %i(show update destroy avatar)
-  before_action :authenticate_request, only: %i(create update delete)
+  before_action :authenticate_request, only: %i(create update destroy)
 
   attr_reader :camp
 
