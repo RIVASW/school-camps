@@ -9,7 +9,11 @@ const initialState = {
   isSuccess: false,
   isDeleted: false,
   isEdited: false,
-  isAdmin: false
+  isAdmin: false,
+  isLoginFormVisible: false,
+  isUserLoginSucces: false,
+  isUserLoginError: false,
+  authenticationToken: undefined
 };
 
 function rootReducer(state, action) {
@@ -39,6 +43,24 @@ function rootReducer(state, action) {
       return { ...state, isEdited: true };
     case "IS_ADMIN":
       return { ...state, isAdmin: action.isAdmin };
+    case "SHOW_LOGIN_FORM":
+      return { ...state, isLoginFormVisible: true, isUserLoginError: false };
+    case "HIDE_LOGIN_FORM":
+      return { ...state, isLoginFormVisible: false };
+    case "USER_LOGIN":
+      return { ...state, isUserLoginSucces: false, isUserLoginError: false, isAdmin: false };
+    case "LOGIN_SUCCESS":
+      return {
+        ...state,
+        authenticationToken: action.json.auth_token,
+        isUserLoginSucces: true,
+        isLoginFormVisible: false,
+        isAdmin: true
+      };
+    case "LOGIN_ERROR":
+      return { ...state, isUserLoginError: true };
+    case "LOG_OUT":
+      return { ...state, isUserLoginSucces: false, isAdmin: false }
   default: return state;
   }
 };

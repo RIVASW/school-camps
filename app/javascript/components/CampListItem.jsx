@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import photo1 from '../images/02.jpg';
 
 const CampListItem = (props) => {
     const {id, location, name, isAdmin} = props;
@@ -9,11 +9,14 @@ const CampListItem = (props) => {
     return (
         <div className="col-md-4">
             <div className="card mb-4 box-shadow">
+
+            <img src={photo1} className="card-img-top" alt="Thumbnail [100%x225]" />
+
                 <div className="card-body">
                     <Link to={`/camps/${id}`}>
                         <p className="card-text">{name}</p>
                     </Link>
-                        <p className="card-text">{location}</p>
+                        {/* <p className="card-text">{location}</p> */}
                 </div>
 
                 {isAdmin && 
@@ -33,3 +36,4 @@ const mapStateToProps = ((state) => {
 });
   
 export default connect (mapStateToProps)(CampListItem);
+
