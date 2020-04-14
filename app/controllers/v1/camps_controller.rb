@@ -1,18 +1,29 @@
 # frozen_string_literal: true
 
 class V1::CampsController < V1::ApiBase
+  include Rails.application.routes.url_helpers
+
   before_action :set_camp, only: %i(show update destroy avatar)
   before_action :authenticate_request, only: %i(create update destroy)
 
   attr_reader :camp
 
   def index
-    camps = Camp.all.map { |camp| { id: camp.id, name: camp.name, location: camp.location } }
+    camps = Camp.all.map do |camp|
+      {
+        id: camp.id,
+        name: camp.name,
+        location: camp.location,
+        avatar: camp.avatar.attached? && polymorphic_url(camp.avatar),
+      }
+    end
     render(json: camps)
   end
 
   def show
-    render(json: camp)
+    camp_data = camp.attributes
+    camp_data = camp_data.merge(avatar: camp.avatar.attached? && polymorphic_url(camp.avatar))
+    render(json: camp_data)
   end
 
   def create
