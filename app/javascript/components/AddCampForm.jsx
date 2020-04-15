@@ -1,7 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Image from './Image';
+import ImageUpload from './ImageUpload';
 import styles from "../styles/styles";
+import photo from '../images/02.jpg';
+import styled from 'styled-components';
+
+const Mini = styled.img`
+width: 277px;
+height: 176px;
+`;
 
 class AddCampForm extends React.Component {
 
@@ -14,6 +21,7 @@ class AddCampForm extends React.Component {
             price: props.camp ? props.camp.price : '',
             contacts: props.camp ? props.camp.contacts : '',
             description: props.camp ? props.camp.description : '',
+            avatar: props.camp ? props.camp.avatar : '',
             error: ''
         };
     };
@@ -40,6 +48,7 @@ class AddCampForm extends React.Component {
         const description = e.target.value;
         this.setState(() => ({ description }))
     };
+
     onSubmit = (e) => {
         e.preventDefault();
         if (!this.state.name || !this.state.description || !this.state.location) {
@@ -51,8 +60,9 @@ class AddCampForm extends React.Component {
                 location: this.state.location,
                 price: this.state.price,
                 contacts: this.state.contacts,
-                description: this.state.description
-            })
+                description: this.state.description,
+                avatar: this.props.image
+            }, this.props.token)
         }
     };
 
@@ -60,7 +70,7 @@ class AddCampForm extends React.Component {
         return (
     <div>
         <div className="activities-list">
-            <h3>I wanna recomend a camp or activity:</h3>
+            <h5>Add camp:</h5>
             <form onSubmit={this.onSubmit}>
                 <input 
                     type="text"
@@ -92,7 +102,9 @@ class AddCampForm extends React.Component {
                     placeholder="description"
                     value={this.state.description}
                     onChange={this.onDescriptionChange}
-                />
+                /> 
+                <ImageUpload/>
+                <Mini src={this.state.avatar}/>
                 <button>Submit</button>
             </form>
         </div>
@@ -103,7 +115,8 @@ class AddCampForm extends React.Component {
 
 const mapStateToProps=((state) => {
     return {
-        state
+        image: state.newCampImage,
+        token: state.authenticationToken
     }
   });
   

@@ -8,8 +8,8 @@ const AddCampPage = (props) => {
     return (
         <div>
             <AddCampForm
-                onSubmit={(forReview) => {
-                    props.dispatch(addNewCamp(forReview));
+                onSubmit={(forReview, token) => {
+                    props.dispatch(addNewCamp(forReview, token));
                 }}
             />
         </div>

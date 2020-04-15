@@ -22,7 +22,7 @@ function loginError() {
 
 function handleResponse(dispatch, response) {
   if (response.status === 200) {
-    dispatch(loginSuccess(response.json()))
+    response.json().then(json => dispatch(loginSuccess(json)))
   } else {
     dispatch(loginError())
   }
@@ -33,6 +33,7 @@ export function userSignin({userName, userPassword}) {
         dispatch(userLogin())
             return fetch(`http://localhost:3000/v1/authenticate?email=${userName}&password=${userPassword}`, {
                 method: "POST"
-            }).then ((response) => handleResponse(dispatch, response))
+            })
+            .then ((response) => handleResponse(dispatch, response))
     }
 };

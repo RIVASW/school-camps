@@ -23,14 +23,9 @@ class EditCampPage extends React.Component {
                     <AddCampForm
                         camp={this.props.camp}
                         onSubmit={(camp) => {
-                            this.props.dispatch(editCamp(this.props.camp.id, camp));
+                            this.props.dispatch(editCamp(this.props.camp.id, camp, this.props.token));
                         }}
                     />
-                    <button 
-                        onClick={() => {
-                            this.props.dispatch(deleteCamp(this.props.camp.id));
-                        }}
-                    >Delete</button>
                 </div>
             );
         }
@@ -41,7 +36,8 @@ class EditCampPage extends React.Component {
 const mapStateToProps = ((state) => {
     return {
         camp: state.currentCamp,
-        isFetching: state.isFetching
+        isFetching: state.isFetching,
+        token: state.authenticationToken
     };
 });
   
