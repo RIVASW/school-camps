@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk";
 
 const initialState = {
@@ -13,7 +14,8 @@ const initialState = {
   isLoginFormVisible: false,
   isUserLoginSucces: false,
   isUserLoginError: false,
-  authenticationToken: undefined
+  authenticationToken: null,
+  newCampImage: null
 };
 
 function rootReducer(state, action) {
@@ -60,7 +62,9 @@ function rootReducer(state, action) {
     case "LOGIN_ERROR":
       return { ...state, isUserLoginError: true };
     case "LOG_OUT":
-      return { ...state, isUserLoginSucces: false, isAdmin: false }
+      return { ...state, isUserLoginSucces: false, isAdmin: false };
+    case "IMAGE_TO_STORE":
+      return { ...state, newCampImage: action.image };
   default: return state;
   }
 };
@@ -69,7 +73,7 @@ export default function configureStore() {
   const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunk)
+    composeWithDevTools(applyMiddleware(thunk))
   );
   return store;
 };

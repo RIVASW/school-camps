@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import photo1 from '../images/02.jpg';
 import { deleteCamp } from '../actions/deleteCamp';
 
 class CampListItem extends React.Component {
@@ -19,7 +18,7 @@ class CampListItem extends React.Component {
         <div className="col-md-4">
             <div className="card mb-4 box-shadow">
 
-            <img src={photo1} className="card-img-top" alt="Thumbnail [100%x225]" />
+            { this.props.avatar && <img src={this.props.avatar} className="card-img-top" alt="Thumbnail [100%x225]" />}
 
                 <div className="card-body">
                     <Link to={`/camps/${this.props.id}`}>

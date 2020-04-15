@@ -12,11 +12,19 @@ function editSuccess() {
   }
 };
 
-export function editCamp(id, {name, location, price, contacts, description}) {
+export function editCamp(id, camp, token) {
     return (dispatch) => {
         dispatch(editCampRequest())
-            return fetch(`http://localhost:3000/v1/camps/${id}?name=${name}&location=${location}&price=${price}&contacts=${contacts}&description=${description}`, {
-                method: "PUT"
-            }).then (() => dispatch(editSuccess()))
+        const formData = new FormData();
+        for(let key in camp) {
+          camp[key] && formData.append(key, camp[key]);
+        }
+        return fetch(`http://localhost:3000/v1/camps/${id}`, {
+            method: "PUT",
+            body: formData,
+            headers: {
+              'Authorization': token
+            }
+        }).then (() => dispatch(editSuccess()))
     }
 };

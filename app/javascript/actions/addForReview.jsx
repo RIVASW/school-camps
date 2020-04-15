@@ -12,14 +12,21 @@ function sendSuccess() {
   }
 };
 
-export function addNewCamp({name, location, price, contacts, description}) {
+export function addNewCamp(camp, token) {
     return (dispatch) => {
         dispatch(addForReview())
-            return fetch(`http://localhost:3000/v1/camps/?name=${name}&location=${location}&price=${price}&contacts=${contacts}&description=${description}`, {
-                method: "POST"
-            }).then (() => dispatch(sendSuccess()))
+        const formData = new FormData();
+        for(let key in camp) {
+          camp[key] && formData.append(key, camp[key]);
+        }
+        return fetch(`http://localhost:3000/v1/camps`, {
+            method: "POST",
+            body: formData,
+            headers: {
+              'Authorization': token
+            }
+        }).then (() => dispatch(sendSuccess()))
     }
 };
-
 
 
