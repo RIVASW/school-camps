@@ -3,7 +3,13 @@ import { connect } from 'react-redux';
 import { deleteCamp } from '../actions/deleteCamp';
 import { editCamp } from '../actions/editCamp';
 import AddCampForm from './AddCampForm';
-import { fetchCamp } from '../actions/camp'
+import { fetchCamp } from '../actions/camp';
+import styled from 'styled-components';
+
+const DivStyled = styled.div`
+    margin-left: 200;
+    margin-right: 200;
+`;
 
 class EditCampPage extends React.Component {
 
