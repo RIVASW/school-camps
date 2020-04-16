@@ -21,7 +21,7 @@ class AddCampForm extends React.Component {
             price: props.camp ? props.camp.price : '',
             contacts: props.camp ? props.camp.contacts : '',
             description: props.camp ? props.camp.description : '',
-            avatar: props.camp ? props.camp.avatar : '',
+            avatar: props.camp ? props.camp.avatar : null,
             error: ''
         };
     };
@@ -36,9 +36,7 @@ class AddCampForm extends React.Component {
     };
     onPriceChange = (e) => {
         const price = e.target.value;
-        if (!price || price.match(/^\d{1,}(\.\d{0,2})?$/)) {
-            this.setState(() => ({ price }));
-        }
+        this.setState(() => ({ price }));
     };
     onContactsChange = (e) => {
         const contacts = e.target.value;
@@ -68,47 +66,81 @@ class AddCampForm extends React.Component {
 
     render() {
         return (
-    <div>
-        <div className="activities-list">
-            <h5>Add camp:</h5>
-            <form onSubmit={this.onSubmit}>
-                <input 
-                    type="text"
-                    placeholder="name"
-                    autoFocus
-                    value={this.state.name}
-                    onChange={this.onNameChange}
-                />
-                <input 
-                    type="text"
-                    placeholder="location"
-                    value={this.state.location}
-                    onChange={this.onLocationChange}
-                />
-                <input 
-                    type="text"
-                    placeholder="price"
-                    value={this.state.price}
-                    onChange={this.onPriceChange}
-                />
-                <input 
-                    type="text"
-                    placeholder="contacts"
-                    value={this.state.contacts}
-                    onChange={this.onContactsChange}
-                />
-                <input 
-                    type="text"
-                    placeholder="description"
-                    value={this.state.description}
-                    onChange={this.onDescriptionChange}
-                /> 
+    
+        <div>
+            <form onSubmit={this.onSubmit} className="text-center border border-light p-5">
+            <p className="h4 mb-4">Add camp:</p>
+                
+            <div className="form-row">
+                <div className="col-md-8">
+
+                    <div class="form-group">
+                        <input 
+                            type="text"
+                            placeholder="name"
+                            autoFocus
+                            class="form-control"
+                            id="formGroupExampleInput"
+                            value={this.state.name}
+                            onChange={this.onNameChange}
+                        />
+                    </div>
+                    
+                    <div class="form-group">
+                        <input 
+                            type="text"
+                            placeholder="location"
+                            class="form-control"
+                            id="formGroupExampleInput1"
+                            value={this.state.location}
+                            onChange={this.onLocationChange}
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <input 
+                            type="text"
+                            placeholder="price"
+                            class="form-control"
+                            id="formGroupExampleInput2"
+                            value={this.state.price}
+                            onChange={this.onPriceChange}
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <input 
+                            type="text"
+                            placeholder="contacts"
+                            class="form-control"
+                            id="formGroupExampleInput3"
+                            value={this.state.contacts}
+                            onChange={this.onContactsChange}
+                        />
+                    </div>
+
+                    <div class="md-form md-outline">
+                        <textarea 
+                            id="form75" 
+                            class="md-textarea form-control" 
+                            rows="3"
+                            placeholder="information about the camp"
+                            value={this.state.description}
+                            onChange={this.onDescriptionChange}
+                        ></textarea>
+                    </div>
+                </div>
+                { 
+                this.state.avatar && 
+                    <div className="col-md-4">
+                        <Mini src={this.state.avatar}/>
+                    </div>
+                }
                 <ImageUpload/>
-                <Mini src={this.state.avatar}/>
                 <button>Submit</button>
+                </div>
             </form>
         </div>
-    </div>
         )
     }
 };
@@ -122,3 +154,50 @@ const mapStateToProps=((state) => {
   
 export default connect (mapStateToProps)(AddCampForm);
 
+
+{/* <form>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Camp name</label>
+    <input 
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput"
+        placeholder="camp name">
+        value={this.state.name}
+        onChange={this.onNameChange}
+  </div>
+
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Location</label>
+    <input 
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput2"
+        placeholder="Location">
+        value={this.state.location}
+        onChange={this.onLocationChange}
+  </div>
+
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Price</label>
+    <input 
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput2"
+        placeholder="Price">
+        value={this.state.price}
+        onChange={this.onPriceChange}
+  </div>
+
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Contacts</label>
+    <input 
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput2"
+        placeholder="Contacts">
+        value={this.state.contacts}
+        onChange={this.onChange}
+  </div>
+
+</form> */}
