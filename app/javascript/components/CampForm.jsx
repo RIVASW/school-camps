@@ -13,7 +13,7 @@ width: 277px;
 height: 176px;
 `;
 
-function AddCampForm_Hooks(props) {
+function CampForm(props) {
 
     const [name, setName] = useState('');
     const [location, setLocation] = useState('');
@@ -143,4 +143,4 @@ function AddCampForm_Hooks(props) {
         )
 };
 
-export default AddCampForm_Hooks;
+export default CampForm;
