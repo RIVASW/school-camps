@@ -7,9 +7,8 @@ const initialState = {
   currentCamp: null,
   isFetching: false,
   forReview: undefined,
-  isSuccess: false,
+  isCampSubmited: false,
   isDeleted: false,
-  isEdited: false,
   isAdmin: false,
   isLoginFormVisible: false,
   isUserLoginSucces: false,
@@ -32,17 +31,17 @@ function rootReducer(state, action) {
       console.log(currentCamp);
       return { ...state, currentCamp, isFetching: false };
     case "ADD_FOR_REVIEW":
-      return { ...state, isSuccess: false };
+      return { ...state, isCampSubmited: false };
     case "SEND_SUCCESS":
-      return { ...state, isSuccess: true };
+      return { ...state, isCampSubmited: true };
     case "DELETE_REQUEST":
       return { ...state, isDeleted: false };
     case "DELETED_SUCCES":
       return { ...state, isDeleted: true };
     case "EDIT_CAMP_REQUEST":
-      return { ...state, isEdited: false };
+      return { ...state, isCampSubmited: false };
     case "EDIT_SUCCESS":
-      return { ...state, isEdited: true };
+      return { ...state, isCampSubmited: true };
     case "IS_ADMIN":
       return { ...state, isAdmin: action.isAdmin };
     case "SHOW_LOGIN_FORM":
@@ -65,6 +64,8 @@ function rootReducer(state, action) {
       return { ...state, isUserLoginSucces: false, isAdmin: false };
     case "IMAGE_TO_STORE":
       return { ...state, newCampImage: action.image };
+    case "RESET_CAMP_FORM":
+      return { ...state, isCampSubmited: false, currentCamp: null, newCampImage: null };
   default: return state;
   }
 };
