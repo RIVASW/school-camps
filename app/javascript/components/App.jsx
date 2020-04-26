@@ -7,12 +7,12 @@ import configreStore from "../configureStore"
 import CampListItemPage from "./CampListItemPage"
 import MainPage from "./MainPage"
 import ActivitiesPage from "./ActivitiesPage"
-import AddCampPage from "./AddCampPage"
-import EditCampPage from "./EditCampPage"
 import NavigationBar from "./NavigationBar"
 import { Layuot } from "./Layout"
 import { Jumbotron } from "./Jumbotron"
 import styled from 'styled-components';
+import Footer from "./Footer"
+import AddCampForm_Hooks from "./AddCampForm_Hooks"
 
 const MainWrapper = styled.section`
   background-color: #f2f4f5;
@@ -35,11 +35,12 @@ class App extends React.Component {
                     <Route path="/camps" component={CampsPage} exact={true} />
                     <Route path="/camps/:id" component={CampListItemPage} />
                     <Route exact path="/activities" component={ActivitiesPage} />
-                    <Route exact path="/add" component={AddCampPage} />
-                    <Route exact path="/edit/:id" component={EditCampPage} />
+                    <Route exact path="/add" component={AddCampForm_Hooks} />
+                    <Route exact path="/edit/:id" component={AddCampForm_Hooks} />
                   </Switch>    
               </Layuot>
             </MainWrapper>
+            <Footer/>
           </BrowserRouter>
         </React.Fragment>
       </Provider>
