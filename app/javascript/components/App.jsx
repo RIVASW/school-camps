@@ -12,7 +12,7 @@ import { Layuot } from "./Layout"
 import { Jumbotron } from "./Jumbotron"
 import styled from 'styled-components';
 import Footer from "./Footer"
-import AddCampForm_Hooks from "./AddCampForm_Hooks"
+import CampForm from "./CampForm"
 
 const MainWrapper = styled.section`
   background-color: #f2f4f5;
@@ -35,8 +35,8 @@ class App extends React.Component {
                     <Route path="/camps" component={CampsPage} exact={true} />
                     <Route path="/camps/:id" component={CampListItemPage} />
                     <Route exact path="/activities" component={ActivitiesPage} />
-                    <Route exact path="/add" component={AddCampForm_Hooks} />
-                    <Route exact path="/edit/:id" component={AddCampForm_Hooks} />
+                    <Route exact path="/add" component={CampForm} />
+                    <Route exact path="/edit/:id" component={CampForm} />
                   </Switch>    
               </Layuot>
             </MainWrapper>
