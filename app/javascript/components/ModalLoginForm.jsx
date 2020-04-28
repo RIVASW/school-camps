@@ -26,7 +26,8 @@ export default class ModalLoginForm extends React.Component {
     render() {
         return (
             <Modal
-                {...this.props}
+                show={this.props.show}
+                hide={this.props.hide}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
