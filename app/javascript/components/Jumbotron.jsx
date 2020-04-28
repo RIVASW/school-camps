@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap';
-import mainPhoto from '../images/seaphoto.jpg';
 
 const StyledJumbo = styled.div`
     @import url('https://fonts.googleapis.com/css?family=Chango&display=swap');
