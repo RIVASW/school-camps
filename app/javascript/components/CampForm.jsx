@@ -48,6 +48,10 @@ function CampForm(props) {
         campID && dispatch(fetchCamp(campID));
     }, []);
 
+    useEffect(() => {
+        isCampSubmited && history.push('/camps') 
+    });
+
     useEffect(() => () => dispatch(resetCampForm()), []);
 
    const onSubmit = (e) => {
@@ -67,62 +71,61 @@ function CampForm(props) {
 
     return (
         <div>
-            { isCampSubmited && history.push('/camps') }
             <form onSubmit={onSubmit} className="text-center border border-light p-5">
             <p className="h4 mb-4">Add camp:</p>
                 
             <div className="form-row">
                 <div className="col-md-8">
 
-                    <div class="form-group">
+                    <div className="form-group">
                         <input 
                             type="text"
                             placeholder="name"
                             autoFocus
-                            class="form-control"
+                            className="form-control"
                             id="formGroupExampleInput"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
                     </div>
                     
-                    <div class="form-group">
+                    <div className="form-group">
                         <input 
                             type="text"
                             placeholder="location"
-                            class="form-control"
+                            className="form-control"
                             id="formGroupExampleInput1"
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
                         />
                     </div>
 
-                    <div class="form-group">
+                    <div className="form-group">
                         <input 
                             type="text"
                             placeholder="price"
-                            class="form-control"
+                            className="form-control"
                             id="formGroupExampleInput2"
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                         />
                     </div>
 
-                    <div class="form-group">
+                    <div className="form-group">
                         <input 
                             type="text"
                             placeholder="contacts"
-                            class="form-control"
+                            className="form-control"
                             id="formGroupExampleInput3"
                             value={contacts}
                             onChange={(e) => setContacts(e.target.value)}
                         />
                     </div>
 
-                    <div class="md-form md-outline">
+                    <div className="md-form md-outline">
                         <textarea 
                             id="form75" 
-                            class="md-textarea form-control" 
+                            className="md-textarea form-control" 
                             rows="3"
                             placeholder="information about the camp"
                             value={description}

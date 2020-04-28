@@ -122,7 +122,7 @@ function ImageUpload (props) {
                 <input {...getInputProps()} />
                 <p>Drag 'n' drop some files here, or click to select files</p>
             </div>
-            <aside id>
+            <aside>
                 <ul>{filepath}</ul>
             </aside>
             <aside style={thumbsContainer}>
