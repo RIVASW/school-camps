@@ -21,7 +21,7 @@ function rootReducer(state, action) {
 
   switch (action.type) {
     case "REQUEST_CAMPS":
-      return { ...state, isFetching: true };
+      return { ...state, isFetching: true, isCampSubmited: false, isDeleted: false };
     case "RECEIVE_CAMPS":
       return { ...state, camps: action.json, isFetching: false };
     case "REQUEST_CAMP":
@@ -36,7 +36,7 @@ function rootReducer(state, action) {
       return { ...state, isCampSubmited: true };
     case "DELETE_REQUEST":
       return { ...state, isDeleted: false };
-    case "DELETED_SUCCES":
+    case "DELETED_SUCCESS":
       return { ...state, isDeleted: true };
     case "EDIT_CAMP_REQUEST":
       return { ...state, isCampSubmited: false };
@@ -65,7 +65,7 @@ function rootReducer(state, action) {
     case "IMAGE_TO_STORE":
       return { ...state, newCampImage: action.image };
     case "RESET_CAMP_FORM":
-      return { ...state, isCampSubmited: false, currentCamp: null, newCampImage: null };
+      return { ...state, isCampSubmited: false, currentCamp: null, newCampImage: null, isDeleted: false };
   default: return state;
   }
 };

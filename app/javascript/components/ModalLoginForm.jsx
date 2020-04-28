@@ -43,7 +43,7 @@ export default class ModalLoginForm extends React.Component {
 
                         <Row>
                             <Col sm={6}>
-                                {this.props.isLoginError &&
+                                {this.props.isloginerror &&
                                     <Alert variant="danger">Wrong e-mail or password</Alert>
                                 }
 

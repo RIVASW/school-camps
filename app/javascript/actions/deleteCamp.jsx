@@ -12,11 +12,14 @@ function deletedSuccess() {
   }
 };
 
-export function deleteCamp(id) {
+export function deleteCamp(id, token) {
     return (dispatch) => {
         dispatch(deleteRequest())
             return fetch(`http://localhost:3000/v1/camps/${id}`, {
-                method: "DELETE"
+                method: "DELETE",
+                headers: {
+                  'Authorization': token
+                }
             }).then (() => dispatch(deletedSuccess()))
     }
 };
