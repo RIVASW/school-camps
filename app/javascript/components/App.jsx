@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { Provider } from "react-redux"
-import CampsPage from "./CampsPage"
+// import CampsPage from "./CampsPage"
 import configreStore from "../configureStore"
 import CampListItemPage from "./CampListItemPage"
 import MainPage from "./MainPage"
@@ -13,6 +13,7 @@ import { Jumbotron } from "./Jumbotron"
 import styled from 'styled-components';
 import Footer from "./Footer"
 import CampForm from "./CampForm"
+import CampsList from "./CampsList"
 
 const MainWrapper = styled.section`
   background-color: #f2f4f5;
@@ -32,7 +33,7 @@ class App extends React.Component {
               <Layuot>
                   <Switch>
                     <Route exact path="/" component={MainPage} />
-                    <Route path="/camps" component={CampsPage} exact={true} />
+                    <Route path="/camps" component={CampsList} exact={true} />
                     <Route path="/camps/:id" component={CampListItemPage} />
                     <Route exact path="/activities" component={ActivitiesPage} />
                     <Route exact path="/add" component={CampForm} />
