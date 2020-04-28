@@ -2,7 +2,6 @@ import React, {useMemo, useEffect, useState} from 'react';
 import {useDropzone} from 'react-dropzone';
 import { useDispatch, useSelector } from "react-redux";
 import { imageToStore } from '../actions/imageLoad';
-import photo from '../images/02.jpg';
 
 const baseStyle = {
   flex: 1,

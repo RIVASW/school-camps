@@ -1,6 +1,4 @@
 import React from 'react';
-import Image from './Image';
-import styles from "../styles/styles";
 
 const ActivitiesPage = () => (
     <div className="activities-list">
