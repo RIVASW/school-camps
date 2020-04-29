@@ -5,6 +5,9 @@ import CampListItem from './CampListItem';
 import { deleteCamp } from '../actions/deleteCamp';
 import { fetchCamps } from '../actions/camps';
 import styled from 'styled-components';
+import { confirmDeleteCamp } from '../actions/deleteCamp';
+import ConfirmDeleteModal from './ConfirmDeleteModal';
+import { hideDeleteModal } from "../actions/modalDeleteForm";
 
 const TextStyle = styled.div`
   @import url('https://fonts.googleapis.com/css?family=Overpass&display=swap');
@@ -20,9 +23,19 @@ const CampsList = () => {
     const isDeleted = useSelector(state => state.isDeleted);
     const camps = useSelector(state => state.camps);
     const isFetching = useSelector(state => state.isFetching);
+    const isConfirmDeleteVisible = useSelector(state => state.isConfirmDeleteVisible);
+    const campToDeleteId = useSelector(state => state.campToDeleteId);
 
     const onDelete = (id) => {
-        dispatch(deleteCamp(id, token));
+        dispatch(confirmDeleteCamp(id));
+    };
+
+    const onDeleteConfirm = () => {
+        dispatch(deleteCamp(campToDeleteId, token))
+    };
+
+    const onHideDeleteModal = () => {
+        dispatch(hideDeleteModal());
     };
 
     useEffect(() => {
@@ -45,6 +58,12 @@ const CampsList = () => {
             </div>
         </div>
         </TextStyle>
+
+        <ConfirmDeleteModal
+            show={isConfirmDeleteVisible}
+            onDeleteConfirm={onDeleteConfirm}
+            onHide={onHideDeleteModal}
+        />
         </div>
     )
 }

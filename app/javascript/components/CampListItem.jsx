@@ -1,13 +1,11 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function CampListItem(props) {
-    
     const isAdmin = useSelector(state => state.isAdmin);
 
     const onDelete = (e) => {
-        e.target.disabled = true;
         props.onDelete(props.id);
     };
 
@@ -32,6 +30,7 @@ function CampListItem(props) {
                         {isAdmin && 
                         <button type="button" className="btn btn-sm btn-outline-secondary" onClick={onDelete}>delete</button>
                         }
+
                     </div>
                 </div>
             </div> 

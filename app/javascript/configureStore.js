@@ -5,10 +5,12 @@ import thunk from "redux-thunk";
 const initialState = {
   camps: [],
   currentCamp: null,
+  campToDeleteId: null,
   isFetching: false,
   forReview: undefined,
   isCampSubmited: false,
   isDeleted: false,
+  isConfirmDeleteVisible: false,
   isAdmin: false,
   isLoginFormVisible: false,
   isUserLoginSucces: false,
@@ -37,7 +39,7 @@ function rootReducer(state, action) {
     case "DELETE_REQUEST":
       return { ...state, isDeleted: false };
     case "DELETED_SUCCESS":
-      return { ...state, isDeleted: true };
+      return { ...state, isDeleted: true, isConfirmDeleteVisible: false };
     case "EDIT_CAMP_REQUEST":
       return { ...state, isCampSubmited: false };
     case "EDIT_SUCCESS":
@@ -66,6 +68,12 @@ function rootReducer(state, action) {
       return { ...state, newCampImage: action.image };
     case "RESET_CAMP_FORM":
       return { ...state, isCampSubmited: false, currentCamp: null, newCampImage: null, isDeleted: false };
+    case "SHOW_DELETE_MODAL":
+      return { ...state, isConfirmDeleteVisible: true };
+    case "HIDE_DELETE_MODAL":
+      return { ...state, isConfirmDeleteVisible: false };
+    case "CONFIRM_DELETE_CAMP":
+      return { ...state, campToDeleteId: action.id, isConfirmDeleteVisible: true }
   default: return state;
   }
 };
