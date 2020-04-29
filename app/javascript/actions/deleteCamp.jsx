@@ -23,3 +23,10 @@ export function deleteCamp(id, token) {
             }).then (() => dispatch(deletedSuccess()))
     }
 };
+
+export function confirmDeleteCamp(id) {
+  return {
+    type: "CONFIRM_DELETE_CAMP",
+    id
+  }
+};
