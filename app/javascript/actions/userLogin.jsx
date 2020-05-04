@@ -20,6 +20,14 @@ function loginError() {
   }
 };
 
+export const SET_TOKEN = 'SET_TOKEN'
+export function setToken(token) {
+  return {
+    type: SET_TOKEN,
+    token
+  }
+};
+
 function handleResponse(dispatch, response) {
   if (response.status === 200) {
     response.json().then(json => dispatch(loginSuccess(json)))
