@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk";
+import { SET_TOKEN } from './actions/userLogin';
 
 const initialState = {
   camps: [],
@@ -73,7 +74,9 @@ function rootReducer(state, action) {
     case "HIDE_DELETE_MODAL":
       return { ...state, isConfirmDeleteVisible: false };
     case "CONFIRM_DELETE_CAMP":
-      return { ...state, campToDeleteId: action.id, isConfirmDeleteVisible: true }
+      return { ...state, campToDeleteId: action.id, isConfirmDeleteVisible: true };
+    case SET_TOKEN:
+      return { ...state, authenticationToken: action.token, isAdmin: true }
   default: return state;
   }
 };
