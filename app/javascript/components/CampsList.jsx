@@ -15,6 +15,7 @@ const TextStyle = styled.div`
   font-family: 'Overpass', sans-serif;
   font-size: 1rem;
   color: #8aadbd;
+  padding-bottom: 30px;
 `;
 
 const CampsList = () => {
