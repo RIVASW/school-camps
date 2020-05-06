@@ -13,14 +13,18 @@ const StyledJumbo = styled.div`
     }
 
     .mainText {
-        font-size: 40px;
+        @media (min-width: 768px) {font-size: 30px};
+        @media (min-width: 992px) {font-size: 35px};
+        @media (min-width: 1200px) {font-size: 40px};
         color: white;
         font-family: 'Overpass', sans-serif;
         text-align: center;
     }
 
     .jumboDescription {
-        font-size: 25px;
+        @media (min-width: 768px) {font-size: 21px};
+        @media (min-width: 992px) {font-size: 23px};
+        @media (min-width: 1200px) {font-size: 25px;};
         font-family: 'Overpass', sans-serif;
         text-align: center;
         color: white;

@@ -1,48 +1,64 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const FooterStyle = styled.div`
+    padding: 40px 0 20px 0;
+    margin: 0 40px 40px 40px;
+`;
+const ColName = styled.h3`
+    color: #bfdce3;
+`;
+const ColDiv = styled.div`
+    color: #82a1a8;
+`;
+const ColOne = styled.div`
+    margin-right: 25px;
+`;
+const ColThree = styled.div`
+    margin-left: 20px;
+`;
 
 const Footer = () => {
     return (
         <div>
-            <footer className="page-footer font-small cyan darken-3">
+            <footer>
+                <FooterStyle>
                 <div className="container">
                     <div className="row">
-
-                        <div className="col-md-12 py-5">
-                        <div className="mb-5 flex-center">
-
-                        <a className="fb-ic">
-                            <i className="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                
-                        <a className="tw-ic">
-                            <i className="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                
-                        <a className="gplus-ic">
-                            <i className="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                
-                        <a className="li-ic">
-                            <i className="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                
-                        <a className="ins-ic">
-                            <i className="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                        </a>
-                
-                        <a className="pin-ic">
-                            <i className="fab fa-pinterest fa-lg white-text fa-2x"> </i>
-                        </a>
+                        
+                        <div className="col-md-5" >
+                            <ColOne>
+                            <ColName>About us</ColName>
+                            <ColDiv>
+                            <p>We are parents as well and we are looking for the best for our children. We've collected here only the camps we trust.</p>
+                            <p>@ KidsCamps Inc.</p>
+                            </ColDiv>
+                            </ColOne>
                         </div>
+                        <div className="col-md-4">
+                            <ColName>Contact</ColName>
+                            <ColDiv>
+                            <p>Sydney, Australia</p>
+                            <p>Phone: 098765432</p>
+                            <p>e-mail: jhdbfjsb@kdhb.com</p>
+                            <p>skype: fkjshfkj</p>
+                            </ColDiv>
+                        </div>
+                        <div className="col-md-3">
+                            <ColThree>
+                            <ColName>Links</ColName>
+                            <ColDiv>
+                            <p>Facebook</p>
+                            <p>Instagram</p>
+                            <p>Twitter</p>
+                            </ColDiv>
+                            </ColThree>
                         </div>
                     </div>
                 </div>
-    
-                <div className="footer-copyright text-center py-3">© 2020 Copyright:
-                    <a href="https://google.com/">KidsCamps.com</a>
-                </div>
+                </FooterStyle>
             </footer>
-    </div>
+        </div>
     )
 }
 
