@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FooterStyle = styled.div`
-    padding: 40px 0 20px 0;
-    margin: 0 40px 40px 40px;
+    padding: 40px 40px 40px 40px;
+    background-color: #8aadbd;
 `;
 const ColName = styled.h3`
     color: #bfdce3;
 `;
 const ColDiv = styled.div`
-    color: #82a1a8;
+    color: #e9f1f5;
 `;
 const ColOne = styled.div`
     margin-right: 25px;

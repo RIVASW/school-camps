@@ -16,7 +16,7 @@ function CampListItem(props) {
             { props.avatar && <img src={props.avatar} className="card-img-top" alt="Thumbnail [100%x225]" />}
 
                 <div className="card-body">
-                    <Link to={`/camps/${props.id}`}>
+                    <Link to={`/camps/${props.id}`} style={{color: '#28627d'}}>
                         <p className="card-text">{props.name}</p>
                     </Link>
                         <p>{props.location}</p>
