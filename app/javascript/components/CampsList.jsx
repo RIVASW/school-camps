@@ -9,13 +9,14 @@ import { confirmDeleteCamp } from '../actions/deleteCamp';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import { hideDeleteModal } from "../actions/modalDeleteForm";
 
-const TextStyle = styled.div`
+export const TextStyle = styled.div`
   @import url('https://fonts.googleapis.com/css?family=Overpass&display=swap');
 
   font-family: 'Overpass', sans-serif;
   font-size: 1rem;
   color: #8aadbd;
   padding-bottom: 30px;
+  padding-top: 30px;
 `;
 
 const CampsList = () => {
@@ -50,7 +51,7 @@ const CampsList = () => {
     return(
         <div>
         <TextStyle>
-        <h3 className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">Camps for kids</h3>
+        <h3 className="pb-md-4 mx-auto text-center">Camps for kids</h3>
         <div className="container">
             <div className="row">
                 {camps.map((camp) => { 

@@ -37,14 +37,14 @@ export function LoginBlock() {
         <ButtonToolbar>
             {
                 isAdmin && 
-                <Button onClick={() => dispatch(logOut())}>
+                <Button onClick={() => dispatch(logOut())} style={{background: '#28627d'}}>
                     Log out
                 </Button>
             }
 
             {
                 !isAdmin &&
-                <Button onClick={() => dispatch(showLoginForm())}>
+                <Button onClick={() => dispatch(showLoginForm())} style={{background: '#28627d'}}>
                     Sign in
                 </Button>
             }
