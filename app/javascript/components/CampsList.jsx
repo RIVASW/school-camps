@@ -8,6 +8,8 @@ import styled from 'styled-components';
 import { confirmDeleteCamp } from '../actions/deleteCamp';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import { hideDeleteModal } from "../actions/modalDeleteForm";
+import { setCurrentPage } from "../actions/pagination";
+import Pagination from "./Pagination";
 
 export const TextStyle = styled.div`
   @import url('https://fonts.googleapis.com/css?family=Overpass&display=swap');
@@ -27,6 +29,12 @@ const CampsList = () => {
     const isFetching = useSelector(state => state.isFetching);
     const isConfirmDeleteVisible = useSelector(state => state.isConfirmDeleteVisible);
     const campToDeleteId = useSelector(state => state.campToDeleteId);
+    const campsPerPage = useSelector(state => state.campsPerPage);
+    const currentPage = useSelector(state => state.currentPage);
+
+    const indexOfLastPost = currentPage * campsPerPage;
+    const indexOfFirstPost = indexOfLastPost - campsPerPage;
+    const currentPosts = camps.slice(indexOfFirstPost, indexOfLastPost);
 
     const onDelete = (id) => {
         dispatch(confirmDeleteCamp(id));
@@ -38,6 +46,10 @@ const CampsList = () => {
 
     const onHideDeleteModal = () => {
         dispatch(hideDeleteModal());
+    };
+
+    const paginate = (number) => {
+        dispatch(setCurrentPage(number))
     };
 
     useEffect(() => {
@@ -54,10 +66,16 @@ const CampsList = () => {
         <h3 className="pb-md-4 mx-auto text-center">Camps for kids</h3>
         <div className="container">
             <div className="row">
-                {camps.map((camp) => { 
+                {currentPosts.map((camp) => { 
                     return <CampListItem key={camp.id} {...camp} onDelete={onDelete}/>
                 })}
             </div>
+            <Pagination
+                campsPerPage={campsPerPage}
+                totalCamps={camps.length}
+                paginate={paginate}
+                currentPage={currentPage}
+            />
         </div>
         </TextStyle>
 
