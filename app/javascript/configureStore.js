@@ -2,11 +2,14 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk";
 import { SET_TOKEN } from './actions/userLogin';
+import { SET_CURRENT_PAGE } from './actions/pagination';
 
 const initialState = {
   camps: [],
   currentCamp: null,
   campToDeleteId: null,
+  currentPage: 1,
+  campsPerPage: 9,
   isFetching: false,
   forReview: undefined,
   isCampSubmited: false,
@@ -76,7 +79,9 @@ function rootReducer(state, action) {
     case "CONFIRM_DELETE_CAMP":
       return { ...state, campToDeleteId: action.id, isConfirmDeleteVisible: true };
     case SET_TOKEN:
-      return { ...state, authenticationToken: action.token, isAdmin: true }
+      return { ...state, authenticationToken: action.token, isAdmin: true };
+    case SET_CURRENT_PAGE:
+      return { ...state, currentPage: action.pageNumber }
   default: return state;
   }
 };
