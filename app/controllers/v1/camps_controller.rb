@@ -4,12 +4,18 @@ class V1::CampsController < V1::ApiBase
   include Rails.application.routes.url_helpers
 
   before_action :set_camp, only: %i(show update destroy avatar)
-  before_action :authenticate_request, only: %i(create update destroy)
+  before_action :authenticate_request, only: %i(update destroy)
 
   attr_reader :camp
 
   def index
-    camps = Camp.all.map do |camp|
+    scope = if params[:confirmed]
+              Camp.where(confirmed: params[:confirmed])
+            else
+              Camp.all
+            end
+
+    camps = scope.map do |camp|
       {
         id: camp.id,
         name: camp.name,
@@ -27,7 +33,13 @@ class V1::CampsController < V1::ApiBase
   end
 
   def create
-    new_camp = Camp.create!(camp_params)
+    new_params = if current_user
+                   camp_params
+                 else
+                   camp_params.except(:confirmed)
+                 end
+
+    new_camp = Camp.create!(new_params)
     render(json: new_camp)
   end
 
@@ -63,6 +75,7 @@ class V1::CampsController < V1::ApiBase
       :contacts,
       :description,
       :avatar,
+      :confirmed
     )
   end
 end

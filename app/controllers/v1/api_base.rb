@@ -3,12 +3,13 @@
 class V1::ApiBase < ApplicationController
   protect_from_forgery with: :null_session
 
-  attr_reader :current_user
-
   private
 
   def authenticate_request
-    @current_user = AuthorizeApiRequest.call(request.headers).result
-    render(json: { error: 'Not Authorized' }, status: 401) unless @current_user
+    render(json: { error: 'Not Authorized' }, status: 401) unless current_user
+  end
+
+  def current_user
+    @current_user ||= AuthorizeApiRequest.call(request.headers).result
   end
 end
