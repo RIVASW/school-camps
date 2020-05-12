@@ -13,6 +13,12 @@ width: 277px;
 height: 176px;
 `;
 
+const Header = styled.p`
+color: #28627d;
+font-size: 25px;
+margin-bottom: 15px;
+`;
+
 function CampForm(props) {
 
     const [name, setName] = useState('');
@@ -71,8 +77,8 @@ function CampForm(props) {
 
     return (
         <div>
-            <form onSubmit={onSubmit} className="text-center border border-light p-5">
-            <p className="h4 mb-4">Add camp:</p>
+            <form onSubmit={onSubmit} className="text-center border border-light p-3">
+            <Header>Add camp:</Header>
                 
             <div className="form-row">
                 <div className="col-md-8">
@@ -139,7 +145,7 @@ function CampForm(props) {
                     </div>
                 }
                 <ImageUpload/>
-                <button>Submit</button>
+                <button type="submit" className="btn btn-sm btn-outline-secondary">Submit</button>
                 </div>
             </form>
         </div>
