@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import CampListItem from './CampListItem';
 import { deleteCamp } from '../actions/deleteCamp';
 import { fetchCamps } from '../actions/camps';
-import styled from 'styled-components';
 import { confirmDeleteCamp } from '../actions/deleteCamp';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import { hideDeleteModal } from "../actions/modalDeleteForm";
 import { setCurrentPage } from "../actions/pagination";
 import Pagination from "./Pagination";
+import styled from 'styled-components';
 
 export const TextStyle = styled.div`
   @import url('https://fonts.googleapis.com/css?family=Overpass&display=swap');
