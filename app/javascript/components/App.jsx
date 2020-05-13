@@ -5,14 +5,14 @@ import { Provider } from "react-redux"
 import configreStore from "../configureStore"
 import CampListItemPage from "./CampListItemPage"
 import MainPage from "./MainPage"
-import ActivitiesPage from "./ActivitiesPage"
 import NavigationBar from "./NavigationBar"
 import { Layuot } from "./Layout"
 import { Jumbotron } from "./Jumbotron"
-import styled from 'styled-components';
+import styled from 'styled-components'
 import Footer from "./Footer"
 import CampForm from "./CampForm"
 import CampsList from "./CampsList"
+import { ThanksPage } from "./ThanksPage"
 
 const MainWrapper = styled.section`
   background-color: #f2f4f5;
@@ -32,11 +32,12 @@ class App extends React.Component {
               <Layuot>
                   <Switch>
                     <Route exact path="/" component={MainPage} />
-                    <Route path="/camps" component={CampsList} exact={true} />
+                    <Route path="/camps" component={() => <CampsList confirmed={true} />} exact={true} />
                     <Route path="/camps/:id" component={CampListItemPage} />
-                    <Route exact path="/activities" component={ActivitiesPage} />
+                    <Route exact path="/not_confirmed" component={() => <CampsList confirmed={false} />} />
                     <Route exact path="/add" component={CampForm} />
                     <Route exact path="/edit/:id" component={CampForm} />
+                    <Route exact path="/thanks" component={ThanksPage} />
                   </Switch>    
               </Layuot>
             </MainWrapper>

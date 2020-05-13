@@ -21,7 +21,7 @@ export const TextStyle = styled.div`
   padding-top: 30px;
 `;
 
-const CampsList = () => {
+const CampsList = (props) => {
     const dispatch = useDispatch();
     const token = useSelector(state => state.authenticationToken);
     const isDeleted = useSelector(state => state.isDeleted);
@@ -53,11 +53,11 @@ const CampsList = () => {
     };
 
     useEffect(() => {
-       dispatch(fetchCamps());
+       dispatch(fetchCamps(props.confirmed));
     }, []);
 
     useEffect(() => { 
-        isDeleted && dispatch(fetchCamps()) 
+        isDeleted && dispatch(fetchCamps(props.confirmed)) 
     });
 
     return(
