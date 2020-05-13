@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Nav, Navbar } from 'react-bootstrap';
 import { LoginBlock } from './LoginBlock';
@@ -12,6 +13,7 @@ const NavStyle = styled.div`
 `;
 
 export default function NavigationBar() {
+    const isAdmin = useSelector(state => state.isAdmin);
    
     return(
         <NavStyle>
@@ -21,7 +23,7 @@ export default function NavigationBar() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
                         <NavLink className="d-inline p-2" to="/camps" style={{ color: '#8aadbd' }} activeStyle={{ color: '#28627d' }}>Camps</NavLink>
-                        <NavLink className="d-inline p-2" to="/activities" style={{ color: '#8aadbd' }} activeStyle={{ color: '#28627d' }}>Activities</NavLink>
+                        { isAdmin && <NavLink className="d-inline p-2" to="/not_confirmed" style={{ color: '#8aadbd' }} activeStyle={{ color: '#28627d' }}>To confirm</NavLink> }
                         <NavLink className="d-inline p-2" to="/add" style={{ color: '#8aadbd' }} activeStyle={{ color: '#28627d' }}>Add camp</NavLink>
                         
                         <LoginBlock/>

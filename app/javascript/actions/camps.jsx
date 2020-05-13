@@ -15,12 +15,11 @@ function receiveCamps(json) {
   }
 };
 
-export function fetchCamps() {
+export function fetchCamps(confirmed) {
     return (dispatch) => {
       dispatch(requestCamps())
-      return fetch("v1/camps.json")
+      return fetch(`v1/camps.json?confirmed=${confirmed}`)
         .then(response => response.json())
         .then(json => dispatch(receiveCamps(json)))
     }
   };
-

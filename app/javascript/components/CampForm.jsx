@@ -28,11 +28,13 @@ function CampForm(props) {
     const [description, setDescription] = useState('');
     const [error, setError] = useState('');
     const [avatarUrl, setAvatarUrl] = useState();
+    const [confirmed, setConfirmed] = useState(false);
 
     const avatar = useSelector(state => state.newCampImage);
     const token = useSelector(state => state.authenticationToken);
     const isCampSubmited = useSelector(state => state.isCampSubmited);
     const currentCamp = useSelector(state => state.currentCamp);
+    const isAdmin = useSelector(state => state.isAdmin);
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -47,6 +49,7 @@ function CampForm(props) {
             setContacts(currentCamp.contacts);
             setDescription(currentCamp.description);
             setAvatarUrl(currentCamp.avatar);
+            setConfirmed(currentCamp.confirmed)
         }
     }, [currentCamp]);
     
@@ -55,7 +58,7 @@ function CampForm(props) {
     }, []);
 
     useEffect(() => {
-        isCampSubmited && history.push('/camps') 
+        isCampSubmited && history.push('/camps'); 
     });
 
     useEffect(() => () => dispatch(resetCampForm()), []);
@@ -66,7 +69,7 @@ function CampForm(props) {
             setError('Please provide name, description and location.')
         } else {
             setError('');
-            const newCamp = {name, location, price, contacts, description, avatar};
+            const newCamp = {name, location, price, contacts, description, avatar, confirmed};
             if (campID) {
                 dispatch(editCamp(currentCamp.id, newCamp, token));
             } else {
@@ -145,7 +148,19 @@ function CampForm(props) {
                     </div>
                 }
                 <ImageUpload/>
-                <button type="submit" className="btn btn-sm btn-outline-secondary">Submit</button>
+                
+                {   isAdmin &&
+                    <div className="checkbox">
+                        <label>
+                            <input type="checkbox"
+                            checked={confirmed}
+                            onChange={(e) => setConfirmed(e.target.checked)}/> Ready to be posted      
+                        </label>
+                    </div>
+                }
+                <div className="container text-left mt-2">
+                    <button type="submit" className="btn btn-sm btn-outline-secondary">Submit</button>
+                </div>    
                 </div>
             </form>
         </div>

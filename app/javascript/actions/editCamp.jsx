@@ -17,7 +17,7 @@ export function editCamp(id, camp, token) {
         dispatch(editCampRequest())
         const formData = new FormData();
         for(let key in camp) {
-          camp[key] && formData.append(key, camp[key]);
+          (camp[key] || camp[key] === false) && formData.append(key, camp[key]);
         }
         return fetch(`http://localhost:3000/v1/camps/${id}`, {
             method: "PUT",
