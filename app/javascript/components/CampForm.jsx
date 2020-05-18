@@ -58,7 +58,8 @@ function CampForm(props) {
     }, []);
 
     useEffect(() => {
-        isCampSubmited && history.push('/camps'); 
+        const redirectTo = props.match.params.redirectTo;
+        isCampSubmited && history.push(`/${redirectTo}`); 
     });
 
     useEffect(() => () => dispatch(resetCampForm()), []);

@@ -9,6 +9,8 @@ function CampListItem(props) {
         props.onDelete(props.id);
     };
 
+    const linkTo = props.confirmed ? '/camps' : '/not_confirmed';
+
     return (
         <div className="col-md-4">
             <div className="card mb-4 box-shadow">
@@ -23,7 +25,7 @@ function CampListItem(props) {
 
                     <div className="btn-group">
                         {isAdmin && 
-                            <Link to={`/edit/${props.id}`}>
+                            <Link to={`/edit/${props.id}${linkTo}`}>
                                 <button type="button" className="btn btn-sm btn-outline-secondary">edit</button>
                             </Link>
                         }

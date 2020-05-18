@@ -67,7 +67,7 @@ const CampsList = (props) => {
         <div className="container">
             <div className="row">
                 {currentPosts.map((camp) => { 
-                    return <CampListItem key={camp.id} {...camp} onDelete={onDelete}/>
+                    return <CampListItem key={camp.id} {...camp} onDelete={onDelete} confirmed={props.confirmed}/>
                 })}
             </div>
             <Pagination

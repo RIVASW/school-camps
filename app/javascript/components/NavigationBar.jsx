@@ -14,6 +14,7 @@ const NavStyle = styled.div`
 
 export default function NavigationBar() {
     const isAdmin = useSelector(state => state.isAdmin);
+    const addLink = isAdmin ? '/add/camps' : '/add/thanks';
    
     return(
         <NavStyle>
@@ -24,7 +25,7 @@ export default function NavigationBar() {
                     <Nav className="ml-auto">
                         <NavLink className="d-inline p-2" to="/camps" style={{ color: '#8aadbd' }} activeStyle={{ color: '#28627d' }}>Camps</NavLink>
                         { isAdmin && <NavLink className="d-inline p-2" to="/not_confirmed" style={{ color: '#8aadbd' }} activeStyle={{ color: '#28627d' }}>To confirm</NavLink> }
-                        <NavLink className="d-inline p-2" to="/add" style={{ color: '#8aadbd' }} activeStyle={{ color: '#28627d' }}>Add camp</NavLink>
+                        <NavLink className="d-inline p-2" to={addLink} style={{ color: '#8aadbd' }} activeStyle={{ color: '#28627d' }}>Add camp</NavLink>
                         
                         <LoginBlock/>
                         

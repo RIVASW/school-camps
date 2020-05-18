@@ -35,8 +35,8 @@ class App extends React.Component {
                     <Route path="/camps" component={() => <CampsList confirmed={true} />} exact={true} />
                     <Route path="/camps/:id" component={CampListItemPage} />
                     <Route exact path="/not_confirmed" component={() => <CampsList confirmed={false} />} />
-                    <Route exact path="/add" component={CampForm} />
-                    <Route exact path="/edit/:id" component={CampForm} />
+                    <Route exact path="/add/:redirectTo" component={CampForm} />
+                    <Route exact path="/edit/:id/:redirectTo" component={CampForm} />
                     <Route exact path="/thanks" component={ThanksPage} />
                   </Switch>    
               </Layuot>
