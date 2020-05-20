@@ -19,6 +19,13 @@ font-size: 25px;
 margin-bottom: 15px;
 `;
 
+const Alert = styled.p`
+color: #28627d;
+font-size: 20px;
+padding-top: 20px;
+text-align: center;
+`;
+
 function CampForm(props) {
 
     const [name, setName] = useState('');
@@ -81,6 +88,7 @@ function CampForm(props) {
 
     return (
         <div>
+            { error && <Alert>Please, fill in the <b>name</b> of the camp, <b>location</b> and a few words in the field <b>about the camp</b>. Thank you!</Alert> }
             <form onSubmit={onSubmit} className="text-center border border-light p-3">
             <Header>Add camp:</Header>
                 
@@ -90,7 +98,7 @@ function CampForm(props) {
                     <div className="form-group">
                         <input 
                             type="text"
-                            placeholder="name"
+                            placeholder="name of the camp"
                             autoFocus
                             className="form-control"
                             id="formGroupExampleInput"
@@ -102,7 +110,7 @@ function CampForm(props) {
                     <div className="form-group">
                         <input 
                             type="text"
-                            placeholder="location"
+                            placeholder="location - only suburb or full adress as you like"
                             className="form-control"
                             id="formGroupExampleInput1"
                             value={location}
@@ -113,7 +121,7 @@ function CampForm(props) {
                     <div className="form-group">
                         <input 
                             type="text"
-                            placeholder="price"
+                            placeholder="min price per day or per course, only numbers"
                             className="form-control"
                             id="formGroupExampleInput2"
                             value={price}
@@ -124,7 +132,7 @@ function CampForm(props) {
                     <div className="form-group">
                         <input 
                             type="text"
-                            placeholder="contacts"
+                            placeholder="website"
                             className="form-control"
                             id="formGroupExampleInput3"
                             value={contacts}

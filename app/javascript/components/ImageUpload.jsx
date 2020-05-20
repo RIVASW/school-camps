@@ -119,7 +119,7 @@ function ImageUpload (props) {
         <div className="container" style={{marginTop: 30}}>
             <div {...getRootProps({style})}>
                 <input {...getInputProps()} />
-                <p>Drag 'n' drop some files here, or click to select files</p>
+                <p>If you want you can drag 'n' drop some files here, or click to select files</p>
             </div>
             <aside>
                 <ul>{filepath}</ul>

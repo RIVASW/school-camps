@@ -6,7 +6,7 @@ const StyledJumbo = styled.div`
     @import url('https://fonts.googleapis.com/css?family=Chango&display=swap');
     .jumbo {
         background-color: #bfdce3;
-        height: 320px;
+        height: 300px;
         position: relative;
         z-index: -2;
         margin-bottom: 0;
@@ -15,7 +15,7 @@ const StyledJumbo = styled.div`
     .mainText {
         @media (min-width: 768px) {font-size: 30px};
         @media (min-width: 992px) {font-size: 35px};
-        @media (min-width: 1200px) {font-size: 40px};
+        @media (min-width: 1200px) {font-size: 45px};
         color: white;
         font-family: 'Overpass', sans-serif;
         text-align: center;
@@ -36,9 +36,9 @@ export const Jumbotron = () => (
     <StyledJumbo>
     <Jumbo fluid className="jumbo">
         <Container>
-            <p className="mainText">Catalog of camps and activities for kids</p>
-            <p className="jumboDescription">We collected camps and other activities for your kids on this web-site, 
-            so that you could find exectly what you are looking for the kids not to be bored at home during school holidays</p>
+            <p className="mainText">The catalog of camps and activities for the kids</p>
+            <p className="jumboDescription">School holiday camps and other activities. 
+            <br/>Visit our 'Add camp' section to add the camp you would like to recommend.</p>
         </Container>
     </Jumbo>
     </StyledJumbo>
