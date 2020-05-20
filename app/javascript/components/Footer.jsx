@@ -30,7 +30,7 @@ const Footer = () => {
                             <ColOne>
                             <ColName>About us</ColName>
                             <ColDiv>
-                            <p>We are parents as well and we are looking for the best for our children. We've collected here only the camps we trust.</p>
+                            <p>We are parents as well and we are looking for the best for our children. We've collected here only the camps we find interesting.</p>
                             <p>@ KidsCamps Inc.</p>
                             </ColDiv>
                             </ColOne>
