@@ -12,13 +12,15 @@ function sendSuccess() {
   }
 };
 
-export function addNewCamp(camp, token) {
+export function addNewCamp(camp, token, captchaToken) {
     return (dispatch) => {
         dispatch(addForReview())
         const formData = new FormData();
         for(let key in camp) {
-          camp[key] && formData.append(key, camp[key]);
+          camp[key] && formData.append(`camp[${key}]`, camp[key]);
         }
+        formData.append('captcha_token', captchaToken);
+        
         return fetch(`http://localhost:3000/v1/camps`, {
             method: "POST",
             body: formData,

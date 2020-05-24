@@ -7,6 +7,7 @@ import { addNewCamp } from '../actions/addForReview';
 import { editCamp } from '../actions/editCamp';
 import { resetCampForm } from '../actions/resetCampSubmited';
 import { fetchCamp } from '../actions/camp';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 const Mini = styled.img`
 width: 277px;
@@ -45,6 +46,7 @@ function CampForm(props) {
 
     const dispatch = useDispatch();
     const history = useHistory();
+    const { executeRecaptcha } = useGoogleReCaptcha();
 
     const campID = props.match.params.id;
 
@@ -71,7 +73,7 @@ function CampForm(props) {
 
     useEffect(() => () => dispatch(resetCampForm()), []);
 
-   const onSubmit = (e) => {
+   const onSubmit = async (e) => {
         e.preventDefault();
         if (!name || !description || !location) {
             setError('Please provide name, description and location.')
@@ -81,7 +83,8 @@ function CampForm(props) {
             if (campID) {
                 dispatch(editCamp(currentCamp.id, newCamp, token));
             } else {
-                dispatch(addNewCamp(newCamp, token));
+                const catpchaToken = await executeRecaptcha("createCamp");
+                dispatch(addNewCamp(newCamp, token, catpchaToken));
             }
         }
     };
