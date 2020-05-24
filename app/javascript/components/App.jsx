@@ -13,6 +13,7 @@ import Footer from "./Footer"
 import CampForm from "./CampForm"
 import CampsList from "./CampsList"
 import { ThanksPage } from "./ThanksPage"
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 
 const MainWrapper = styled.section`
   background-color: #f2f4f5;
@@ -24,6 +25,7 @@ class App extends React.Component {
   render () {
     return (
       <Provider store={store}>
+        <GoogleReCaptchaProvider reCaptchaKey="6LdxWvoUAAAAAAGI6VsY4kAPF-6LmPI_G7hdqlcO">
         <React.Fragment>
           <BrowserRouter>
             <NavigationBar/>
@@ -44,6 +46,7 @@ class App extends React.Component {
             <Footer/>
           </BrowserRouter>
         </React.Fragment>
+        </GoogleReCaptchaProvider>
       </Provider>
     );
   }

@@ -39,9 +39,7 @@ const Footer = () => {
                             <ColName>Contact</ColName>
                             <ColDiv>
                             <p>Sydney, Australia</p>
-                            <p>Phone: 098765432</p>
-                            <p>e-mail: jhdbfjsb@kdhb.com</p>
-                            <p>skype: fkjshfkj</p>
+                            <p>e-mail: kidscamps@mail.com</p>
                             </ColDiv>
                         </div>
                         <div className="col-md-3">
