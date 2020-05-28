@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { BrowserRouter, Switch, Route } from "react-router-dom"
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
 import { Provider } from "react-redux"
 import configreStore from "../configureStore"
 import CampListItemPage from "./CampListItemPage"
@@ -33,7 +33,7 @@ class App extends React.Component {
             <MainWrapper>
               <Layuot>
                   <Switch>
-                    <Route exact path="/" component={MainPage} />
+                    <Route exact path="/"><Redirect to="/camps" /></Route>
                     <Route path="/camps" component={() => <CampsList confirmed={true} />} exact={true} />
                     <Route path="/camps/:id" component={CampListItemPage} />
                     <Route exact path="/not_confirmed" component={() => <CampsList confirmed={false} />} />
