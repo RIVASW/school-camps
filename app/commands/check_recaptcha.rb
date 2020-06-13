@@ -3,7 +3,6 @@
 require 'net/http'
 
 class CheckRecaptcha
-  SECRET = '6LdxWvoUAAAAAMJ06pzLENr4th4rXtIG7M9zyRCX'
   RECAPTCHA_URI = 'https://www.google.com/recaptcha/api/siteverify'
   RECAPTCHA_CHECK_ERROR = 'Error occured while checking reCaptcha'
 
@@ -15,7 +14,7 @@ class CheckRecaptcha
 
   def call
     uri = URI(RECAPTCHA_URI)
-    response = Net::HTTP.post_form(uri, secret: SECRET, response: token)
+    response = Net::HTTP.post_form(uri, secret: ENV['RECAPTCHA_SECRET'], response: token)
 
     if response.is_a?(Net::HTTPSuccess)
       JSON.parse(response.body).symbolize_keys
