@@ -8,6 +8,7 @@ class CreateCamps < ActiveRecord::Migration[6.0]
       t.float :price
       t.string :contacts
       t.text :description, null: false
+      t.boolean :confirmed, default: false
     end
   end
 
