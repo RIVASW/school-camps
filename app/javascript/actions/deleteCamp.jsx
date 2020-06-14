@@ -15,7 +15,7 @@ function deletedSuccess() {
 export function deleteCamp(id, token) {
     return (dispatch) => {
         dispatch(deleteRequest())
-            return fetch(`v1/camps/${id}`, {
+            return fetch(`/v1/camps/${id}`, {
                 method: "DELETE",
                 headers: {
                   'Authorization': token

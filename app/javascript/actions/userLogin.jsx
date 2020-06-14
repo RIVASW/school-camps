@@ -39,7 +39,7 @@ function handleResponse(dispatch, response) {
 export function userSignin({userName, userPassword}) {
     return (dispatch) => {
         dispatch(userLogin())
-            return fetch(`v1/authenticate?email=${userName}&password=${userPassword}`, {
+            return fetch(`/v1/authenticate?email=${userName}&password=${userPassword}`, {
                 method: "POST"
             })
             .then ((response) => handleResponse(dispatch, response))

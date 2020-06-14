@@ -17,11 +17,11 @@ export function addNewCamp(camp, token, captchaToken) {
         dispatch(addForReview())
         const formData = new FormData();
         for(let key in camp) {
-          camp[key] && formData.append(`camp[${key}]`, camp[key]);
+          (camp[key] || camp[key] === false) && formData.append(`camp[${key}]`, camp[key]);
         }
         formData.append('captcha_token', captchaToken);
 
-        return fetch(`v1/camps`, {
+        return fetch(`/v1/camps`, {
             method: "POST",
             body: formData,
             headers: {

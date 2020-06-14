@@ -18,7 +18,7 @@ function receiveCamps(json) {
 export function fetchCamps(confirmed) {
     return (dispatch) => {
       dispatch(requestCamps())
-      return fetch(`v1/camps.json?confirmed=${confirmed}`)
+      return fetch(`/v1/camps.json?confirmed=${confirmed}`)
         .then(response => response.json())
         .then(json => dispatch(receiveCamps(json)))
     }

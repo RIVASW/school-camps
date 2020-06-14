@@ -19,7 +19,7 @@ function receiveCamp(json) {
 export function fetchCamp(id) {
     return (dispatch) => {
       dispatch(requestCamp(id))
-      return fetch(`v1/camps/${id}`)
+      return fetch(`/v1/camps/${id}`)
         .then(response => response.json())
         .then(json => dispatch(receiveCamp(json)))
     }
