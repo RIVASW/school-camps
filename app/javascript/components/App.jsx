@@ -25,7 +25,7 @@ class App extends React.Component {
   render () {
     return (
       <Provider store={store}>
-        <GoogleReCaptchaProvider reCaptchaKey="6LdxWvoUAAAAAAGI6VsY4kAPF-6LmPI_G7hdqlcO">
+        <GoogleReCaptchaProvider reCaptchaKey="6LfMWaQZAAAAANQRD_K_RmZBcJy_3ulrBJH8792G">
         <React.Fragment>
           <BrowserRouter>
             <NavigationBar/>
@@ -40,7 +40,7 @@ class App extends React.Component {
                     <Route exact path="/add/:redirectTo" component={CampForm} />
                     <Route exact path="/edit/:id/:redirectTo" component={CampForm} />
                     <Route exact path="/thanks" component={ThanksPage} />
-                  </Switch>    
+                  </Switch>
               </Layuot>
             </MainWrapper>
             <Footer/>
