@@ -20,8 +20,8 @@ export function addNewCamp(camp, token, captchaToken) {
           camp[key] && formData.append(`camp[${key}]`, camp[key]);
         }
         formData.append('captcha_token', captchaToken);
-        
-        return fetch(`http://localhost:3000/v1/camps`, {
+
+        return fetch(`v1/camps`, {
             method: "POST",
             body: formData,
             headers: {
