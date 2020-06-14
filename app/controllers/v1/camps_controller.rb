@@ -94,7 +94,7 @@ class V1::CampsController < V1::ApiBase
   def camp_params
     params.permit(
       :captcha_token,
-      camp: %i[name location price contacts description avatar confirmed]
+      camp: %i[name location price contacts description avatar confirmed format]
     )
   end
 end
