@@ -12,7 +12,7 @@ function CampListItem(props) {
     const linkTo = props.confirmed ? '/camps' : '/not_confirmed';
 
     return (
-        <div className="col-md-4">
+        <div className="col-lg-4">
             <div className="card mb-4 box-shadow">
 
             { props.avatar && <img src={props.avatar} className="card-img-top" alt="Thumbnail [100%x225]" />}
