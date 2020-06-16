@@ -10,6 +10,10 @@ const NavStyle = styled.div`
 
   font-family: 'Overpass', sans-serif;
   font-size: 1rem;
+
+  @media (min-width: 320px) {font-size: 20px};
+  @media (min-width: 768px) {font-size: 30px};
+  @media (min-width: 1024px) {font-size: 20px};
 `;
 
 export default function NavigationBar() {

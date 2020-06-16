@@ -11,21 +11,24 @@ const StyledJumbo = styled.div`
         z-index: -2;
         margin: 0;
         padding-top: 60px;
+        @media (min-width: 320px) {padding-top: 40px};
+        @media (min-width: 768px) {padding-top: 40px};
+        @media (min-width: 1024px) {padding-top: 60px};
     }
 
     .mainText {
-        @media (min-width: 768px) {font-size: 33px};
-        @media (min-width: 992px) {font-size: 40px};
-        @media (min-width: 1200px) {font-size: 45px};
+        @media (min-width: 320px) {font-size: 33px};
+        @media (min-width: 768px) {font-size: 35px};
+        @media (min-width: 1024px) {font-size: 42px};
         color: white;
         font-family: 'Overpass', sans-serif;
         text-align: center;
     }
 
     .jumboDescription {
-        @media (min-width: 768px) {font-size: 23px; margin-top: 30px};
-        @media (min-width: 992px) {font-size: 23px};
-        @media (min-width: 1200px) {font-size: 25px;};
+        @media (min-width: 320px) {font-size: 23px};
+        @media (min-width: 768px) {font-size: 23px};
+        @media (min-width: 1024px) {font-size: 25px; padding-top: 15px};
         font-family: 'Overpass', sans-serif;
         text-align: center;
         color: white;

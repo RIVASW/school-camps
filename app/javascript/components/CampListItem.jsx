@@ -1,6 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+const FontStyle = styled.div`
+    @media (min-width: 320px) {font-size: 20px};
+    @media (min-width: 768px) {font-size: 25px};
+    @media (min-width: 1024px) {font-size: 20px};
+`;
 
 function CampListItem(props) {
     const isAdmin = useSelector(state => state.isAdmin);
@@ -18,10 +25,13 @@ function CampListItem(props) {
             { props.avatar && <img src={props.avatar} className="card-img-top" alt="Thumbnail [100%x225]" />}
 
                 <div className="card-body">
-                    <Link to={`/camps/${props.id}`} style={{color: '#28627d'}}>
-                        <p className="card-text">{props.name}</p>
-                    </Link>
-                        <p>{props.location}</p>
+
+                    <FontStyle>
+                        <Link to={`/camps/${props.id}`} style={{color: '#28627d'}}>
+                            <p className="card-text">{props.name}</p>
+                        </Link>
+                            <p>{props.location}</p>
+                    </FontStyle>
 
                     <div className="btn-group">
                         {isAdmin && 
